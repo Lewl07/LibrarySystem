@@ -1,4 +1,4 @@
 package org.leoho;
 
-public class Admin {
+public class Admin extends User {
 }

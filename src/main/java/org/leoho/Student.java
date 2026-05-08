@@ -1,4 +1,4 @@
 package org.leoho;
 
-public class Student {
+public class Student extends User {
 }
