@@ -18,20 +18,4 @@ public class Library {
         this.items = new ArrayList<>();
         this.users = new ArrayList<>();
     }
-
-    public boolean borrowItem(User user, Item item) {
-        return true;
-    }
-
-    public boolean returnItem(User user, Item item) {
-        return true;
-    }
-
-    public List<Item> searchTitleRecursive(String keyword) {
-        return new ArrayList<>();
-    }
-
-    public List<Item> searchAuthorStream(String keyword) {
-        return new ArrayList<>();
-    }
 }
