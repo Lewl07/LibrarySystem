@@ -1,12 +1,14 @@
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.leoho.domain.Book;
+import org.leoho.domain.Status;
 import org.leoho.util.Validation;
 
 public class ValidationTest {
 
     @Test
-    @DisplayName("1234567890123 -> true")
+    @DisplayName("1234567890123 (13 digits)-> true")
     void isISBNValidTest1() {
         boolean expected = true;
         boolean actual = Validation.isValidISBN("1234567890123");
@@ -15,38 +17,30 @@ public class ValidationTest {
     }
 
     @Test
-    @DisplayName("12345678901234 -> false")
+    @DisplayName("12345678901234 (14 digits)-> IllegalArgumentException")
     void isISBNValidTest2() {
-        boolean expected = false;
-        boolean actual = Validation.isValidISBN("12345678901234");
-
-        Assertions.assertEquals(expected, actual);
+        Assertions.assertThrows(IllegalArgumentException.class,
+                () -> new Book("fake", Status.IN_STORE, "12345678901234", "?", "?"));
     }
 
     @Test
-    @DisplayName("123456789012 -> false")
+    @DisplayName("123456789012 (12 digits) -> IllegalArgumentException")
     void isISBNValidTest3() {
-        boolean expected = false;
-        boolean actual = Validation.isValidISBN("123456789012");
-
-        Assertions.assertEquals(expected, actual);
+        Assertions.assertThrows(IllegalArgumentException.class,
+                () -> new Book("fake", Status.IN_STORE, "123456789012", "?", "?"));
     }
 
     @Test
-    @DisplayName("\"\" -> false")
+    @DisplayName("\"\" -> IllegalArgumentException")
     void isISBNValidTest4() {
-        boolean expected = false;
-        boolean actual = Validation.isValidISBN("");
-
-        Assertions.assertEquals(expected, actual);
+        Assertions.assertThrows(IllegalArgumentException.class,
+                () -> new Book("fake", Status.IN_STORE, "", "?", "?"));
     }
 
     @Test
-    @DisplayName("null -> false")
+    @DisplayName("null -> IllegalArgumentException")
     void isISBNValidTest5() {
-        boolean expected = false;
-        boolean actual = Validation.isValidISBN(null);
-
-        Assertions.assertEquals(expected, actual);
+        Assertions.assertThrows(IllegalArgumentException.class,
+                () -> new Book("fake", Status.IN_STORE, null, "?", "?"));
     }
 }
