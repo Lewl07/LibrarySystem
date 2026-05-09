@@ -8,6 +8,10 @@ public class Validation {
      * @return whether the ISBN is valid or not
      */
     public static boolean isValidISBN(String isbn) {
+        if (isbn == null) {
+            return false;
+        }
+
         return isbn.matches("\\d{13}");
     }
 }
