@@ -10,12 +10,26 @@ public class Student extends User {
 
     @Override
     public boolean borrowItem(Item item) {
-        return false;
+        if (!(item instanceof Book) || (borrowedItems.size() >= 5)) {
+            throw new IllegalArgumentException("Students can only borrow books.");
+        } else if (item.getStatus() != Status.IN_STORE) {
+            throw new IllegalArgumentException("The book is not available");
+        }
+
+        item.setStatus(Status.BORROWED);
+
+        return borrowedItems.add(item);
     }
 
     @Override
     public boolean returnItem(Item item) {
-        return false;
+        if (!borrowedItems.contains(item)) {
+            throw new IllegalArgumentException("You do not have this book in possession");
+        }
+
+        item.setStatus(Status.IN_STORE);
+
+        return borrowedItems.remove(item);
     }
 
     @Override
