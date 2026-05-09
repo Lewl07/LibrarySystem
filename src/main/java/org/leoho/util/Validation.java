@@ -1,4 +1,4 @@
-package org.leoho;
+package org.leoho.util;
 
 public class Validation {
 }
