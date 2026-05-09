@@ -16,11 +16,13 @@ public abstract class User {
     protected String id;
     protected String name;
     protected List<Item> borrowedItems;
+    protected Library library;
 
-    public User(String name) {
+    public User(String name, Library library) {
         this.id = String.format("%04d", nextId++);
         this.name = name;
         this.borrowedItems = new ArrayList<>();
+        this.library = library;
     }
 
     public abstract boolean borrowItem(Item item);

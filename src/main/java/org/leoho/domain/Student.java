@@ -6,8 +6,8 @@ import java.util.List;
 
 public class Student extends User {
 
-    public Student(String name) {
-        super(name);
+    public Student(String name, Library library) {
+        super(name, library);
     }
 
     @Override

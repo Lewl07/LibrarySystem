@@ -4,8 +4,8 @@ import java.util.List;
 
 public class Teacher extends User {
 
-    public Teacher(String name) {
-        super(name);
+    public Teacher(String name, Library library) {
+        super(name, library);
     }
 
     @Override

@@ -10,7 +10,7 @@ public class StudentTest {
     @Test
     @DisplayName("Borrowing a book with an empty list of borrowedBooks -> true")
     void borrowItemTest1() {
-        Student student = new Student("Leo");
+        Student student = new Student("Leo", new Library());
         Book book = new Book("Java", Status.IN_STORE, "1234567890123", "Leo", "Thriller");
 
         boolean expected = true;
@@ -22,7 +22,7 @@ public class StudentTest {
     @Test
     @DisplayName("Borrowing a lost book -> IllegalArgumentException")
     void borrowItemTest2() {
-        Student student = new Student("Leo");
+        Student student = new Student("Leo", new Library());
 
         Book book = new Book("Java", Status.LOST, "1234567890123", "Leo", "Thriller");
 
@@ -35,7 +35,7 @@ public class StudentTest {
     @Test
     @DisplayName("Borrowing a borrowed book -> IllegalArgumentException")
     void borrowItemTest3() {
-        Student student = new Student("Leo");
+        Student student = new Student("Leo", new Library());
 
         Book book = new Book("Java", Status.BORROWED, "1234567890123", "Leo", "Thriller");
 
@@ -48,7 +48,7 @@ public class StudentTest {
     @Test
     @DisplayName("Borrowing more than 5 books -> IllegalArgumentException")
     void borrowItemTest4() {
-        Student student = new Student("Leo");
+        Student student = new Student("Leo", new Library());
 
         Book book1 = new Book("Java", Status.IN_STORE, "1234567890123", "Leo", "Thriller");
         Book book2 = new Book("Java", Status.IN_STORE, "1234567890123", "Leo", "Thriller");
@@ -72,7 +72,7 @@ public class StudentTest {
     @Test
     @DisplayName("Borrowing an item that is not a book (magazine) -> IllegalArgumentException")
     void borrowItemTest5() {
-        Student student = new Student("Leo");
+        Student student = new Student("Leo", new Library());
 
         Magazine magazine = new Magazine("Java", Status.IN_STORE, 123,"Mike");
 
@@ -85,7 +85,7 @@ public class StudentTest {
     @Test
     @DisplayName("Borrowing an item that is not a book (dvd) -> IllegalArgumentException")
     void borrowItemTest6() {
-        Student student = new Student("Leo");
+        Student student = new Student("Leo", new Library());
 
         DVD dvd = new DVD("Java", Status.IN_STORE,"Mike", 120);
 
@@ -98,7 +98,7 @@ public class StudentTest {
     @Test
     @DisplayName("Borrowing a book with an already existing list containing other books -> true")
     void borrowItemTest7() {
-        Student student = new Student("Leo");
+        Student student = new Student("Leo", new Library());
 
         Book book1 = new Book("Java", Status.IN_STORE, "1234567890123", "Leo", "Thriller");
         Book book2 = new Book("Python", Status.IN_STORE, "1234567890123", "Leo", "Thriller");
@@ -116,7 +116,7 @@ public class StudentTest {
     @Test
     @DisplayName("Returning a book that was borrowed -> true")
     void returnItemTest1() {
-        Student student = new Student("Leo");
+        Student student = new Student("Leo", new Library());
 
         Book book1 = new Book("Java", Status.IN_STORE, "1234567890123", "Leo", "Thriller");
         Book book2 = new Book("Python", Status.IN_STORE, "1234567890123", "Leo", "Thriller");
@@ -133,7 +133,7 @@ public class StudentTest {
     @Test
     @DisplayName("Returning a book that was't borrowed -> IllegalArgumentException")
     void returnItemTest2() {
-        Student student = new Student("Leo");
+        Student student = new Student("Leo", new Library());
 
         Book book1 = new Book("Java", Status.IN_STORE, "1234567890123", "Leo", "Thriller");
         Book book2 = new Book("Python", Status.IN_STORE, "1234567890123", "Leo", "Thriller");

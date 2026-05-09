@@ -6,8 +6,8 @@ import java.util.List;
 
 public class Admin extends User implements Reportable {
 
-    public Admin(String name) {
-        super(name);
+    public Admin(String name, Library library) {
+        super(name, library);
     }
 
     @Override
