@@ -1,5 +1,7 @@
 package org.leoho.domain;
 
+import org.leoho.util.Constants;
+
 import java.util.List;
 
 public class Student extends User {
