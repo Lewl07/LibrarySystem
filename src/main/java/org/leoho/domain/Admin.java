@@ -1,4 +1,15 @@
 package org.leoho.domain;
 
-public class Admin extends User {
+import org.leoho.interfaces.Reportable;
+
+public class Admin extends User implements Reportable {
+
+    public Admin(String name) {
+        super(name);
+    }
+
+    @Override
+    public void generateReport() {
+
+    }
 }
