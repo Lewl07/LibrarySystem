@@ -23,19 +23,11 @@ public abstract class User {
         this.borrowedItems = new ArrayList<>();
     }
 
-    public boolean borrowItem(User user, Item item) {
-        return true;
-    }
+    public abstract boolean borrowItem(Item item);
 
-    public boolean returnItem(User user, Item item) {
-        return true;
-    }
+    public abstract boolean returnItem(Item item);
 
-    public List<Item> searchTitleRecursive(String keyword) {
-        return new ArrayList<>();
-    }
+    public abstract List<Item> searchTitleRecursive(String keyword);
 
-    public List<Item> searchAuthorStream(String keyword) {
-        return new ArrayList<>();
-    }
+    public abstract List<Item> searchAuthorStream(String keyword);
 }
