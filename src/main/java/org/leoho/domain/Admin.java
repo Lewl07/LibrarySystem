@@ -1,9 +1,15 @@
 package org.leoho.domain;
 
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.ToString;
 import org.leoho.interfaces.Reportable;
 
 import java.util.List;
 
+@EqualsAndHashCode(callSuper = true)
+@Getter
+@ToString(callSuper = true)
 public class Admin extends User implements Reportable {
 
     public Admin(String name, Library library) {

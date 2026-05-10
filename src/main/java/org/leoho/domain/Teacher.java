@@ -1,7 +1,14 @@
 package org.leoho.domain;
 
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.ToString;
+
 import java.util.List;
 
+@EqualsAndHashCode(callSuper = true)
+@Getter
+@ToString(callSuper = true)
 public class Teacher extends User {
 
     public Teacher(String name, Library library) {
