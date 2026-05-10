@@ -1,7 +1,13 @@
 package org.leoho.domain;
 
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.ToString;
 import org.leoho.util.Validation;
 
+@EqualsAndHashCode(callSuper = true)
+@Getter
+@ToString(callSuper = true)
 public class Book extends Item {
     private String isbn;
     private String author;
