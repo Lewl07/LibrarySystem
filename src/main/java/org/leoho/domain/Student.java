@@ -22,9 +22,13 @@ public class Student extends User {
      */
     @Override
     public boolean borrowItem(Item item) {
-        if (!(item instanceof Book) || (borrowedItems.size() >= Constants.MAX_BOOKS_STUDENT)) {
+        if (!(item instanceof Book)) {
             throw new IllegalArgumentException("Students can only borrow books.");
-        } else if (item.getStatus() != Status.IN_STORE) {
+        }
+        else if (borrowedItems.size() >= Constants.MAX_BOOKS_STUDENT) {
+            throw new IllegalArgumentException("Students can only borrow up to 5 books.");
+        }
+        else if (item.getStatus() != Status.IN_STORE) {
             throw new IllegalArgumentException("The book is not available.");
         }
 
