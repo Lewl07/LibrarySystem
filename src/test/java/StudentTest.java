@@ -229,4 +229,32 @@ public class StudentTest {
 
         Assertions.assertEquals(expected, actual);
     }
+
+    @Test
+    @DisplayName("keyword: JAVA -> [Java]")
+    void searchStreamTest4() {
+        List<Item> expected = new ArrayList<>();
+
+        Library library = new Library();
+        Student student = new Student("Bob", library);
+
+        Book book1 = new Book
+                ("Java", Status.IN_STORE, "1234567890123", "Leo", "Coding");
+
+        Book book2 = new Book
+                ("Time machine", Status.IN_STORE, "1234567890123", "John", "Sci-Fi");
+
+        Book book3 = new Book
+                ("Java", Status.IN_STORE, "1234567890123", "Robert", "Coding");
+
+        expected.add(book1);
+
+        library.getItems().add(book1);
+        library.getItems().add(book2);
+        library.getItems().add(book3);
+
+        List<Item> actual = student.searchStream("JAVA");
+
+        Assertions.assertEquals(expected, actual);
+    }
 }
