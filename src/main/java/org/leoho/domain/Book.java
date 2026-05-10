@@ -5,9 +5,9 @@ import lombok.Getter;
 import lombok.ToString;
 import org.leoho.util.Validation;
 
-import java.util.Comparator;
+import java.util.Objects;
 
-@EqualsAndHashCode(callSuper = false)
+@EqualsAndHashCode(callSuper = true)
 @Getter
 @ToString(callSuper = true)
 public class Book extends Item {
