@@ -99,7 +99,6 @@ public class Student extends User {
                         ||
                         book.getAuthor().toLowerCase().contains(keyword.toLowerCase()))
                 .filter(item -> uniqueTitle.add(item.getTitle()))
-                .sorted(new Book.TitleComparator())
                 .map(book -> (Item) book)
                 .toList();
     }

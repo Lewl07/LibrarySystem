@@ -24,7 +24,7 @@ public abstract class Item {
     }
 
     /**
-     * Items are compared by title names, if same first letter, sort by id.
+     * Items are compared by title names, if same letter, sort by id.
      */
     public static class TitleComparator implements Comparator<Item> {
 
