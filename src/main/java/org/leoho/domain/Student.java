@@ -67,8 +67,8 @@ public class Student extends User {
      * @return the list of items in accordance to the keyword
      */
     @Override
-    public List<Item> searchStream(String keyword) {
-        Set<String> uniqueTitle = new HashSet<>();
+    public List<Item> searchItemStream(String keyword) {
+        Set<String> uniqueTitle = new LinkedHashSet<>();
 
         return library.getItems().stream()
                 .filter(item -> item instanceof Book)
