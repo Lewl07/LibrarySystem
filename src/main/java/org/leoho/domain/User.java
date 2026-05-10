@@ -47,7 +47,7 @@ public abstract class User {
      * @param keyword the keyword
      * @return the list of items in accordance to the keyword
      */
-    public abstract List<Item> searchTitleRecursive(String keyword);
+    public abstract List<Item> searchRecursive(String keyword);
 
     /**
      * Search items in a library recursively, the user can either search by title or author of items.
