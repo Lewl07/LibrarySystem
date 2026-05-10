@@ -1,5 +1,12 @@
 package org.leoho.domain;
 
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.ToString;
+
+@EqualsAndHashCode(callSuper = true)
+@Getter
+@ToString(callSuper = true)
 public class Magazine extends Item {
     private int issueNumber;
     private String publisher;
