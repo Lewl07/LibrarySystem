@@ -2,13 +2,11 @@ package org.leoho.domain;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
-import lombok.ToString;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Getter
-@ToString
 @EqualsAndHashCode
 public abstract class User {
     private static int nextId = 1;
@@ -57,4 +55,10 @@ public abstract class User {
      * @return the list of items in accordance to the keyword
      */
     public abstract List<Item> searchStream(String keyword);
+
+    @Override
+    public String toString() {
+        return "Id='" + id + '\'' +
+                ", Name='" + name + '\'';
+    }
 }

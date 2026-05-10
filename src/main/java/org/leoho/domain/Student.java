@@ -2,14 +2,12 @@ package org.leoho.domain;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
-import lombok.ToString;
 import org.leoho.util.Constants;
 
 import java.util.*;
 
 @EqualsAndHashCode(callSuper = true)
 @Getter
-@ToString(callSuper = true)
 public class Student extends User {
 
     public Student(String name, Library library) {
@@ -81,5 +79,12 @@ public class Student extends User {
                 .sorted()
                 .map(book -> (Item) book)
                 .toList();
+    }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                super.toString() +
+                '}';
     }
 }
