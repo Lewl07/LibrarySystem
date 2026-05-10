@@ -6,14 +6,13 @@ import lombok.Getter;
 import java.util.ArrayList;
 import java.util.List;
 
-@Getter
 @EqualsAndHashCode
 public abstract class User {
     private static int nextId = 1;
 
-    protected String id;
-    protected String name;
-    protected List<Item> borrowedItems;
+    @Getter protected String id;
+    @Getter protected String name;
+    @Getter protected List<Item> borrowedItems;
     protected Library library;
 
     public User(String name, Library library) {
