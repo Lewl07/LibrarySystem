@@ -27,7 +27,7 @@ public class Admin extends User implements Reportable {
     }
 
     @Override
-    public List<Item> searchTitleRecursive(String keyword) {
+    public List<Item> searchRecursive(String keyword) {
         return List.of();
     }
 

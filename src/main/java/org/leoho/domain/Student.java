@@ -41,7 +41,7 @@ public class Student extends User {
     }
 
     @Override
-    public List<Item> searchTitleRecursive(String keyword) {
+    public List<Item> searchRecursive(String keyword) {
         return List.of();
     }
 
