@@ -1,5 +1,12 @@
 package org.leoho.domain;
 
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.ToString;
+
+@EqualsAndHashCode(callSuper = true)
+@Getter
+@ToString(callSuper = true)
 public class DVD extends Item {
     private String director;
     private int duration;
