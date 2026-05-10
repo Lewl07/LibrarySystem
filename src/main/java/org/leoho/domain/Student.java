@@ -55,22 +55,39 @@ public class Student extends User {
                         ||
                         book.getAuthor().toLowerCase().contains(keyword.toLowerCase()))
                 .distinct()
-                .sorted(new BookComparator())
+                .sorted()
                 .map(book -> (Item) book)
                 .toList();
     }
 
-    private static class BookComparator implements Comparator<Book> {
+    /**
+     * Books are compared by title names, if same first letter, sort by id.
+     */
+    private static class TitleComparator implements Comparator<Book> {
 
         @Override
         public int compare(Book b1, Book b2) {
-            int authorComparison = b1.getAuthor().compareTo(b2.getAuthor());
+            int titleComparison =
+                    b1.getTitle().compareTo(b2.getTitle());
 
-            if (authorComparison != 0) {
-                return authorComparison;
-            }
+            return (titleComparison != 0)
+                    ? titleComparison
+                    : b1.getId().compareTo(b2.getId());
+        }
+    }
+    /**
+     * Books are compared by author names, if same author, sort by id.
+     */
+    private static class AuthorComparator implements Comparator<Book> {
 
-            return b1.getId().compareTo(b2.getId());
+        @Override
+        public int compare(Book b1, Book b2) {
+            int authorComparison =
+                    b1.getAuthor().compareTo(b2.getAuthor());
+
+            return (authorComparison != 0)
+                    ? authorComparison
+                    : b1.getId().compareTo(b2.getId());
         }
     }
 }
