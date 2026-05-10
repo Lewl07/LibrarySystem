@@ -5,10 +5,7 @@ import lombok.Getter;
 import lombok.ToString;
 import org.leoho.util.Constants;
 
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 @EqualsAndHashCode(callSuper = true)
 @Getter
@@ -55,17 +52,22 @@ public class Student extends User {
                 .map(item -> (Book) item)
                 .filter(book -> book.getAuthor().toLowerCase().contains(keyword.toLowerCase()))
                 .distinct()
-                .sorted((b1, b2) -> {
-
-                    int titleComparison = b1.getTitle().compareTo(b2.getTitle());
-
-                    if (titleComparison != 0) {
-                        return titleComparison;
-                    }
-
-                    return b1.getId().compareTo(b2.getId());
-                })
+                .sorted(new StudentComparator())
                 .map(book -> (Item) book)
                 .toList();
+    }
+
+    private static class StudentComparator implements Comparator<Book> {
+
+        @Override
+        public int compare(Book b1, Book b2) {
+            int authorComparison = b1.getAuthor().compareTo(b2.getAuthor());
+
+            if (authorComparison != 0) {
+                return authorComparison;
+            }
+
+            return b1.getId().compareTo(b2.getId());
+        }
     }
 }
