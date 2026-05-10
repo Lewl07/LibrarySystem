@@ -1,13 +1,12 @@
 package org.leoho.domain;
 
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
 import java.util.Comparator;
+import java.util.Objects;
 
-@EqualsAndHashCode
 @Getter
 @ToString
 public abstract class Item {
@@ -37,5 +36,17 @@ public abstract class Item {
                     ? titleComparison
                     : b1.getId().compareTo(b2.getId());
         }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Item item = (Item) o;
+        return Objects.equals(title, item.title);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(title);
     }
 }

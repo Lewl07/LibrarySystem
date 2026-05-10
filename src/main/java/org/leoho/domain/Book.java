@@ -5,8 +5,6 @@ import lombok.Getter;
 import lombok.ToString;
 import org.leoho.util.Validation;
 
-import java.util.Objects;
-
 @EqualsAndHashCode(callSuper = true)
 @Getter
 @ToString(callSuper = true)
