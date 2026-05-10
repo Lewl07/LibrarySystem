@@ -151,7 +151,7 @@ public class StudentTest {
 
     @Test
     @DisplayName("keyword: LEO -> [Java Code, Python Code]")
-    void searchAuthorStreamTest1() {
+    void searchStreamTest1() {
         List<Item> expected = new ArrayList<>();
         Student student = new Student("Bob", new Library());
 
@@ -171,14 +171,14 @@ public class StudentTest {
         student.getLibrary().getItems().add(book2);
         student.getLibrary().getItems().add(book3);
 
-        List<Item> actual = student.searchAuthorStream("LEO");
+        List<Item> actual = student.searchStream("LEO");
 
         Assertions.assertEquals(expected, actual);
     }
 
     @Test
     @DisplayName("keyword: Robert -> []")
-    void searchAuthorStreamTest2() {
+    void searchStreamTest2() {
         List<Item> expected = new ArrayList<>();
         Student student = new Student("Bob", new Library());
 
@@ -195,14 +195,14 @@ public class StudentTest {
         student.getLibrary().getItems().add(book2);
         student.getLibrary().getItems().add(book3);
 
-        List<Item> actual = student.searchAuthorStream("ROBERT");
+        List<Item> actual = student.searchStream("ROBERT");
 
         Assertions.assertEquals(expected, actual);
     }
 
     @Test
     @DisplayName("keyword: \"\" -> []")
-    void searchAuthorStreamTest3() {
+    void searchStreamTest3() {
         List<Item> expected = new ArrayList<>();
         Student student = new Student("Bob", new Library());
 
@@ -219,7 +219,7 @@ public class StudentTest {
         student.getLibrary().getItems().add(book2);
         student.getLibrary().getItems().add(book3);
 
-        List<Item> actual = student.searchAuthorStream("\"\"");
+        List<Item> actual = student.searchStream("\"\"");
 
         Assertions.assertEquals(expected, actual);
     }

@@ -46,11 +46,14 @@ public class Student extends User {
     }
 
     @Override
-    public List<Item> searchAuthorStream(String keyword) {
+    public List<Item> searchStream(String keyword) {
         return library.getItems().stream()
                 .filter(item -> item instanceof Book)
                 .map(item -> (Book) item)
-                .filter(book -> book.getAuthor().toLowerCase().contains(keyword.toLowerCase()))
+                .filter(book ->
+                        book.getTitle().toLowerCase().contains(keyword.toLowerCase())
+                        ||
+                        book.getAuthor().toLowerCase().contains(keyword.toLowerCase()))
                 .distinct()
                 .sorted(new StudentComparator())
                 .map(book -> (Item) book)

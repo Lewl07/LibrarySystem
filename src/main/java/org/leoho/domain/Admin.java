@@ -32,7 +32,7 @@ public class Admin extends User implements Reportable {
     }
 
     @Override
-    public List<Item> searchAuthorStream(String keyword) {
+    public List<Item> searchStream(String keyword) {
         return List.of();
     }
 

@@ -31,5 +31,5 @@ public abstract class User {
 
     public abstract List<Item> searchTitleRecursive(String keyword);
 
-    public abstract List<Item> searchAuthorStream(String keyword);
+    public abstract List<Item> searchStream(String keyword);
 }
