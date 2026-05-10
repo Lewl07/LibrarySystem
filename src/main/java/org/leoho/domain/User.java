@@ -50,7 +50,7 @@ public abstract class User {
     public abstract List<Item> searchRecursive(String keyword);
 
     /**
-     * Search items in a library recursively, the user can either search by title or author of items.
+     * Search items in a library by stream, the user can either search by title or author of items.
      * The search result is alphabetically yielded, if same letter, sort by ID.
      * The sorting is ascending by default.
      * @param keyword the keyword
