@@ -153,7 +153,9 @@ public class StudentTest {
     @DisplayName("keyword: LEO -> [Java Code, Python Code]")
     void searchStreamTest1() {
         List<Item> expected = new ArrayList<>();
-        Student student = new Student("Bob", new Library());
+
+        Library library = new Library();
+        Student student = new Student("Bob", library);
 
         Book book1 = new Book
                 ("Java Code", Status.IN_STORE, "1234567890123", "Leo", "Coding");
@@ -167,9 +169,9 @@ public class StudentTest {
         expected.add(book1);
         expected.add(book3);
 
-        student.getLibrary().getItems().add(book1);
-        student.getLibrary().getItems().add(book2);
-        student.getLibrary().getItems().add(book3);
+        library.getItems().add(book1);
+        library.getItems().add(book2);
+        library.getItems().add(book3);
 
         List<Item> actual = student.searchStream("LEO");
 
@@ -180,7 +182,9 @@ public class StudentTest {
     @DisplayName("keyword: Robert -> []")
     void searchStreamTest2() {
         List<Item> expected = new ArrayList<>();
-        Student student = new Student("Bob", new Library());
+
+        Library library = new Library();
+        Student student = new Student("Bob", library);
 
         Book book1 = new Book
                 ("Java Code", Status.IN_STORE, "1234567890123", "Leo", "Coding");
@@ -191,9 +195,9 @@ public class StudentTest {
         Book book3 = new Book
                 ("Python Code", Status.IN_STORE, "1234567890123", "Leo", "Coding");
 
-        student.getLibrary().getItems().add(book1);
-        student.getLibrary().getItems().add(book2);
-        student.getLibrary().getItems().add(book3);
+        library.getItems().add(book1);
+        library.getItems().add(book2);
+        library.getItems().add(book3);
 
         List<Item> actual = student.searchStream("ROBERT");
 
@@ -204,7 +208,9 @@ public class StudentTest {
     @DisplayName("keyword: \"\" -> []")
     void searchStreamTest3() {
         List<Item> expected = new ArrayList<>();
-        Student student = new Student("Bob", new Library());
+
+        Library library = new Library();
+        Student student = new Student("Bob", library);
 
         Book book1 = new Book
                 ("Java Code", Status.IN_STORE, "1234567890123", "Leo", "Coding");
@@ -215,9 +221,9 @@ public class StudentTest {
         Book book3 = new Book
                 ("Python Code", Status.IN_STORE, "1234567890123", "Leo", "Coding");
 
-        student.getLibrary().getItems().add(book1);
-        student.getLibrary().getItems().add(book2);
-        student.getLibrary().getItems().add(book3);
+        library.getItems().add(book1);
+        library.getItems().add(book2);
+        library.getItems().add(book3);
 
         List<Item> actual = student.searchStream("\"\"");
 
