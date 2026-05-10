@@ -4,6 +4,7 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Set;
 
@@ -60,5 +61,21 @@ public abstract class User {
     public String toString() {
         return "Id='" + id + '\'' +
                 ", Name='" + name + '\'';
+    }
+
+    /**
+     * Users are compared by names, if same letter, sort by id.
+     */
+    public static class NameComparator implements Comparator<User> {
+
+        @Override
+        public int compare(User o1, User o2) {
+            int titleComparison =
+                    o1.getName().compareTo(o2.getName());
+
+            return (titleComparison != 0)
+                    ? titleComparison
+                    : o1.getId().compareTo(o2.getId());
+        }
     }
 }
