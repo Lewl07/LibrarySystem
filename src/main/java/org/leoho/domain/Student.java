@@ -68,6 +68,8 @@ public class Student extends User {
      */
     @Override
     public List<Item> searchStream(String keyword) {
+        Set<String> uniqueTitles = new HashSet<>();
+
         return library.getItems().stream()
                 .filter(item -> item instanceof Book)
                 .map(item -> (Book) item)
@@ -75,8 +77,7 @@ public class Student extends User {
                         book.getTitle().toLowerCase().contains(keyword.toLowerCase())
                         ||
                         book.getAuthor().toLowerCase().contains(keyword.toLowerCase()))
-                .distinct()
-                .sorted()
+                .filter(item -> uniqueTitles.add(item.getTitle()))
                 .map(book -> (Item) book)
                 .toList();
     }
