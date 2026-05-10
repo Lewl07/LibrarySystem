@@ -16,6 +16,12 @@ public class Student extends User {
         super(name, library);
     }
 
+    /**
+     * A user can borrow items, with a borrowing limit of 5 books (BOOKS ONLY) for students, and
+     * a limit of 10 items for teachers.
+     * @param item the item
+     * @return whether the borrowing was a success or not
+     */
     @Override
     public boolean borrowItem(Item item) {
         if (!(item instanceof Book) || (borrowedItems.size() >= Constants.MAX_BOOKS_STUDENT)) {
@@ -29,6 +35,11 @@ public class Student extends User {
         return borrowedItems.add(item);
     }
 
+    /**
+     * A user can return items that was previously borrowed
+     * @param item the item
+     * @return whether the item was successfully returned
+     */
     @Override
     public boolean returnItem(Item item) {
         if (!borrowedItems.contains(item)) {
@@ -40,11 +51,23 @@ public class Student extends User {
         return borrowedItems.remove(item);
     }
 
+    /**
+     * Search items in a library recursively, the user can either search by title or author of items.
+     * The sorting is ascending by default.
+     * @param keyword the keyword
+     * @return the list of items in accordance to the keyword
+     */
     @Override
     public List<Item> searchRecursive(String keyword) {
         return List.of();
     }
 
+    /**
+     * Search items in a library by stream, the user can either search by title or author of items.
+     * The sorting is ascending by default.
+     * @param keyword the keyword
+     * @return the list of items in accordance to the keyword
+     */
     @Override
     public List<Item> searchStream(String keyword) {
         return library.getItems().stream()
@@ -75,6 +98,7 @@ public class Student extends User {
                     : b1.getId().compareTo(b2.getId());
         }
     }
+
     /**
      * Books are compared by author names, if same author, sort by id.
      */
