@@ -82,36 +82,4 @@ public class Student extends User {
                 .map(book -> (Item) book)
                 .toList();
     }
-
-    /**
-     * Books are compared by title names, if same first letter, sort by id.
-     */
-    private static class TitleComparator implements Comparator<Book> {
-
-        @Override
-        public int compare(Book b1, Book b2) {
-            int titleComparison =
-                    b1.getTitle().compareTo(b2.getTitle());
-
-            return (titleComparison != 0)
-                    ? titleComparison
-                    : b1.getId().compareTo(b2.getId());
-        }
-    }
-
-    /**
-     * Books are compared by author names, if same author, sort by id.
-     */
-    private static class AuthorComparator implements Comparator<Book> {
-
-        @Override
-        public int compare(Book b1, Book b2) {
-            int authorComparison =
-                    b1.getAuthor().compareTo(b2.getAuthor());
-
-            return (authorComparison != 0)
-                    ? authorComparison
-                    : b1.getId().compareTo(b2.getId());
-        }
-    }
 }
