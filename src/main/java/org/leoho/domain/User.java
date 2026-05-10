@@ -54,7 +54,7 @@ public abstract class User {
      * @param keyword the keyword
      * @return the Set of items in accordance to the keyword
      */
-    public abstract Set<Item> searchItemStream(String keyword);
+    public abstract List<Item> searchItemStream(String keyword);
 
     @Override
     public String toString() {
