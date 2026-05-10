@@ -55,12 +55,12 @@ public class Student extends User {
                         ||
                         book.getAuthor().toLowerCase().contains(keyword.toLowerCase()))
                 .distinct()
-                .sorted(new StudentComparator())
+                .sorted(new BookComparator())
                 .map(book -> (Item) book)
                 .toList();
     }
 
-    private static class StudentComparator implements Comparator<Book> {
+    private static class BookComparator implements Comparator<Book> {
 
         @Override
         public int compare(Book b1, Book b2) {
