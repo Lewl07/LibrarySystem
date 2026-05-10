@@ -3,6 +3,9 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.leoho.domain.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class StudentTest {
 
     // borrowItem()
@@ -142,5 +145,82 @@ public class StudentTest {
                 IllegalArgumentException.class,
                 () -> student.returnItem(book1)
         );
+    }
+
+    // searchAuthorStream()
+
+    @Test
+    @DisplayName("keyword: LEO -> [Java Code, Python Code]")
+    void searchAuthorStreamTest1() {
+        List<Item> expected = new ArrayList<>();
+        Student student = new Student("Bob", new Library());
+
+        Book book1 = new Book
+                ("Java Code", Status.IN_STORE, "1234567890123", "Leo", "Coding");
+
+        Book book2 = new Book
+                ("Time machine", Status.IN_STORE, "1234567890123", "John", "Sci-Fi");
+
+        Book book3 = new Book
+                ("Python Code", Status.IN_STORE, "1234567890123", "Leo", "Coding");
+
+        expected.add(book1);
+        expected.add(book3);
+
+        student.getLibrary().getItems().add(book1);
+        student.getLibrary().getItems().add(book2);
+        student.getLibrary().getItems().add(book3);
+
+        List<Item> actual = student.searchAuthorStream("LEO");
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("keyword: Robert -> []")
+    void searchAuthorStreamTest2() {
+        List<Item> expected = new ArrayList<>();
+        Student student = new Student("Bob", new Library());
+
+        Book book1 = new Book
+                ("Java Code", Status.IN_STORE, "1234567890123", "Leo", "Coding");
+
+        Book book2 = new Book
+                ("Time machine", Status.IN_STORE, "1234567890123", "John", "Sci-Fi");
+
+        Book book3 = new Book
+                ("Python Code", Status.IN_STORE, "1234567890123", "Leo", "Coding");
+
+        student.getLibrary().getItems().add(book1);
+        student.getLibrary().getItems().add(book2);
+        student.getLibrary().getItems().add(book3);
+
+        List<Item> actual = student.searchAuthorStream("ROBERT");
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("keyword: \"\" -> []")
+    void searchAuthorStreamTest3() {
+        List<Item> expected = new ArrayList<>();
+        Student student = new Student("Bob", new Library());
+
+        Book book1 = new Book
+                ("Java Code", Status.IN_STORE, "1234567890123", "Leo", "Coding");
+
+        Book book2 = new Book
+                ("Time machine", Status.IN_STORE, "1234567890123", "John", "Sci-Fi");
+
+        Book book3 = new Book
+                ("Python Code", Status.IN_STORE, "1234567890123", "Leo", "Coding");
+
+        student.getLibrary().getItems().add(book1);
+        student.getLibrary().getItems().add(book2);
+        student.getLibrary().getItems().add(book3);
+
+        List<Item> actual = student.searchAuthorStream("\"\"");
+
+        Assertions.assertEquals(expected, actual);
     }
 }

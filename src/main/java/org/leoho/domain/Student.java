@@ -4,7 +4,11 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
 import org.leoho.util.Constants;
+
+import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @EqualsAndHashCode(callSuper = true)
 @Getter
@@ -46,6 +50,22 @@ public class Student extends User {
 
     @Override
     public List<Item> searchAuthorStream(String keyword) {
-        return List.of();
+        return library.getItems().stream()
+                .filter(item -> item instanceof Book)
+                .map(item -> (Book) item)
+                .filter(book -> book.getAuthor().toLowerCase().contains(keyword.toLowerCase()))
+                .distinct()
+                .sorted((b1, b2) -> {
+
+                    int titleComparison = b1.getTitle().compareTo(b2.getTitle());
+
+                    if (titleComparison != 0) {
+                        return titleComparison;
+                    }
+
+                    return b1.getId().compareTo(b2.getId());
+                })
+                .map(book -> (Item) book)
+                .toList();
     }
 }
