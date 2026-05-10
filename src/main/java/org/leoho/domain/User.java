@@ -25,11 +25,36 @@ public abstract class User {
         this.library = library;
     }
 
+    /**
+     * A user can borrow items, with a borrowing limit of 5 books (BOOKS ONLY) for students, and
+     * a limit of 10 items for teachers.
+     * @param item the item
+     * @return whether the borrowing was a success or not
+     */
     public abstract boolean borrowItem(Item item);
 
+    /**
+     * A user can return items that was previously borrowed
+     * @param item the item
+     * @return whether the item was successfully returned
+     */
     public abstract boolean returnItem(Item item);
 
+    /**
+     * Search items in a library recursively, the user can either search by title or author of items.
+     * The search result is alphabetically yielded, if same letter, sort by ID.
+     * The sorting is ascending by default.
+     * @param keyword the keyword
+     * @return the list of items in accordance to the keyword
+     */
     public abstract List<Item> searchTitleRecursive(String keyword);
 
+    /**
+     * Search items in a library recursively, the user can either search by title or author of items.
+     * The search result is alphabetically yielded, if same letter, sort by ID.
+     * The sorting is ascending by default.
+     * @param keyword the keyword
+     * @return the list of items in accordance to the keyword
+     */
     public abstract List<Item> searchStream(String keyword);
 }
