@@ -7,7 +7,7 @@ import org.leoho.util.Validation;
 
 import java.util.Comparator;
 
-@EqualsAndHashCode(callSuper = true)
+@EqualsAndHashCode(callSuper = false)
 @Getter
 @ToString(callSuper = true)
 public class Book extends Item {
