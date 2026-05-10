@@ -5,7 +5,9 @@ import lombok.Getter;
 import lombok.ToString;
 import org.leoho.interfaces.Reportable;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @EqualsAndHashCode(callSuper = true)
 @Getter
@@ -27,12 +29,12 @@ public class Admin extends User implements Reportable {
     }
 
     @Override
-    public List<Item> searchRecursive(String keyword) {
-        return List.of();
+    public Set<Item> searchItemRecursive(String keyword) {
+        return new HashSet<>();
     }
 
     @Override
-    public List<Item> searchStream(String keyword) {
+    public List<Item> searchItemStream(String keyword) {
         return List.of();
     }
 

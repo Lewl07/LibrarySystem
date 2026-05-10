@@ -151,7 +151,7 @@ public class StudentTest {
 
     @Test
     @DisplayName("keyword: LEO -> [Java Code, Python Code]")
-    void searchStreamTest1() {
+    void searchItemStreamTest1() {
         List<Item> expected = new ArrayList<>();
 
         Library library = new Library();
@@ -173,14 +173,14 @@ public class StudentTest {
         library.getItems().add(book2);
         library.getItems().add(book3);
 
-        List<Item> actual = student.searchStream("LEO");
+        List<Item> actual = student.searchItemStream("LEO");
 
         Assertions.assertEquals(expected, actual);
     }
 
     @Test
     @DisplayName("keyword: Robert -> []")
-    void searchStreamTest2() {
+    void searchItemStreamTest2() {
         List<Item> expected = new ArrayList<>();
 
         Library library = new Library();
@@ -199,14 +199,14 @@ public class StudentTest {
         library.getItems().add(book2);
         library.getItems().add(book3);
 
-        List<Item> actual = student.searchStream("ROBERT");
+        List<Item> actual = student.searchItemStream("ROBERT");
 
         Assertions.assertEquals(expected, actual);
     }
 
     @Test
     @DisplayName("keyword: \"\" -> []")
-    void searchStreamTest3() {
+    void searchItemStreamTest3() {
         List<Item> expected = new ArrayList<>();
 
         Library library = new Library();
@@ -225,14 +225,14 @@ public class StudentTest {
         library.getItems().add(book2);
         library.getItems().add(book3);
 
-        List<Item> actual = student.searchStream("\"\"");
+        List<Item> actual = student.searchItemStream("\"\"");
 
         Assertions.assertEquals(expected, actual);
     }
 
     @Test
     @DisplayName("keyword: JAVA -> [Java]")
-    void searchStreamTest4() {
+    void searchItemStreamTest4() {
         List<Item> expected = new ArrayList<>();
 
         Library library = new Library();
@@ -253,7 +253,7 @@ public class StudentTest {
         library.getItems().add(book2);
         library.getItems().add(book3);
 
-        List<Item> actual = student.searchStream("JAVA");
+        List<Item> actual = student.searchItemStream("JAVA");
 
         Assertions.assertEquals(expected, actual);
     }
