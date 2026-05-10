@@ -51,13 +51,34 @@ public class Student extends User {
 
     /**
      * Search items in a library recursively, the user can either search by title or author of items.
-     * The sorting is ascending by default.
      * @param keyword the keyword
-     * @return the list of items in accordance to the keyword
+     * @return the Set of items in accordance to the keyword
      */
-    @Override
-    public List<Item> searchRecursive(String keyword) {
-        return List.of();
+    public Set<Item> searchItemRecursive(String keyword) {
+        return helperSearchItemRecursive(keyword.toLowerCase(), 0, new HashSet<>());
+    }
+
+    /**
+     * Helper method for searchItemRecursive()
+     * @param keyword the keyword
+     * @param idx the idx
+     * @return the method itself, recursion
+     */
+    private Set<Item> helperSearchItemRecursive(String keyword, int idx, Set<Item> results) {
+        if (idx >= library.getItems().size()) {
+            return results;
+        }
+
+        Item item = library.getItems().get(idx);
+
+        boolean match = item.getTitle().toLowerCase().contains(keyword) ||
+                        (item instanceof Book && ((Book) item).getAuthor().toLowerCase().contains(keyword));
+
+        if (match) {
+            results.add(item);
+        }
+
+        return helperSearchItemRecursive(keyword, idx + 1, results);
     }
 
     /**
