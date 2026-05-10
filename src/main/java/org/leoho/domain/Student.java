@@ -95,7 +95,8 @@ public class Student extends User {
     public List<Item> searchItemStream(String keyword) {
         Set<String> uniqueTitle = new LinkedHashSet<>();
 
-        return library.getItems().stream()
+        return new ArrayList<>(
+                library.getItems().stream()
                 .filter(item -> item instanceof Book)
                 .map(item -> (Book) item)
                 .filter(book ->
@@ -104,7 +105,8 @@ public class Student extends User {
                         book.getAuthor().toLowerCase().contains(keyword.toLowerCase()))
                 .filter(item -> uniqueTitle.add(item.getTitle()))
                 .map(book -> (Item) book)
-                .toList();
+                .toList()
+        );
     }
 
     @Override
