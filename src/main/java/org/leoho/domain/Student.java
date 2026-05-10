@@ -83,7 +83,7 @@ public class Student extends User {
 
     /**
      * Search items in a library by stream, the user can either search by title or author of items.
-     * The sorting is ascending by default.
+     * TitleComparator is used to sort items (Book).
      * @param keyword the keyword
      * @return the list of items in accordance to the keyword
      */
