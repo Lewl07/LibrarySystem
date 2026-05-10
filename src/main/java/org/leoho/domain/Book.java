@@ -42,20 +42,4 @@ public class Book extends Item {
                     : b1.getId().compareTo(b2.getId());
         }
     }
-
-    /**
-     * Books are compared by author names, if same author, sort by id.
-     */
-    public static class AuthorComparator implements Comparator<Book> {
-
-        @Override
-        public int compare(Book b1, Book b2) {
-            int authorComparison =
-                    b1.getAuthor().compareTo(b2.getAuthor());
-
-            return (authorComparison != 0)
-                    ? authorComparison
-                    : b1.getId().compareTo(b2.getId());
-        }
-    }
 }
