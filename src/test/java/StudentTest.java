@@ -131,7 +131,7 @@ public class StudentTest {
     }
 
     @Test
-    @DisplayName("Returning a book that was't borrowed -> IllegalArgumentException")
+    @DisplayName("Returning a book that wasn't borrowed -> IllegalArgumentException")
     void returnItemTest2() {
         Student student = new Student("Leo", new Library());
 
