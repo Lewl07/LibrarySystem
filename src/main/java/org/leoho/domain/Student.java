@@ -25,10 +25,12 @@ public class Student extends User {
         if (!(item instanceof Book)) {
             throw new IllegalArgumentException("Students can only borrow books.");
         }
-        else if (borrowedItems.size() >= Constants.MAX_BOOKS_STUDENT) {
+
+        if (borrowedItems.size() >= Constants.MAX_BOOKS_STUDENT) {
             throw new IllegalArgumentException("Students can only borrow up to 5 books.");
         }
-        else if (item.getStatus() != Status.IN_STORE) {
+
+        if (item.getStatus() != Status.IN_STORE) {
             throw new IllegalArgumentException("The book is not available.");
         }
 
