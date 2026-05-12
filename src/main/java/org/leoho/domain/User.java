@@ -3,10 +3,7 @@ package org.leoho.domain;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 @EqualsAndHashCode
 public abstract class User {
@@ -46,16 +43,73 @@ public abstract class User {
      * @param keyword the keyword
      * @return the Set of items in accordance to the keyword
      */
-    public abstract Set<Item> searchItemRecursive(String keyword);
+    public Set<Item> searchItemRecursive(String keyword) {
+        return helperSearchItemRecursive(keyword.toLowerCase(), 0, new LinkedHashSet<>());
+    }
+
+    private Set<Item> helperSearchItemRecursive(String keyword, int idx, Set<Item> results) {
+        if (idx >= library.getItems().size()) {
+            return results;
+        }
+
+        Item item = library.getItems().get(idx);
+
+        boolean match = item.getTitle().toLowerCase().contains(keyword)
+
+                        || (item instanceof Book
+                                &&
+                                ((Book) item).getAuthor()
+                                        .toLowerCase()
+                                        .contains(keyword))
+
+                        || (item instanceof Magazine
+                                &&
+                                ((Magazine) item).getPublisher()
+                                        .toLowerCase()
+                                        .contains(keyword))
+
+                        || (item instanceof DVD
+                                &&
+                                ((DVD) item).getDirector()
+                                        .toLowerCase()
+                                        .contains(keyword)
+        );
+
+        if (match) {
+            results.add(item);
+        }
+
+        return helperSearchItemRecursive(keyword, idx + 1, results);
+    }
 
     /**
      * Search items in a library by stream, the user can either search by title or author of items.
      * The search result is alphabetically yielded, if same letter, sort by ID.
      * The sorting is ascending by default.
      * @param keyword the keyword
-     * @return the Set of items in accordance to the keyword
+     * @return the list of items in accordance to the keyword
      */
-    public abstract List<Item> searchItemStream(String keyword);
+    public List<Item> searchItemStream(String keyword) {
+        Set<String> uniqueTitle = new LinkedHashSet<>();
+        String lowerKeyword = keyword.toLowerCase();
+
+        return new ArrayList<>(
+                library.getItems().stream()
+                        .filter(item -> item.getTitle().toLowerCase().contains(lowerKeyword)
+
+                                || (item instanceof Book
+                                && ((Book) item).getAuthor().toLowerCase().contains(lowerKeyword))
+
+                                || (item instanceof Magazine
+                                && ((Magazine) item).getPublisher().toLowerCase().contains(lowerKeyword))
+
+                                || (item instanceof DVD
+                                && ((DVD) item).getDirector().toLowerCase().contains(lowerKeyword)))
+
+                        .filter(item -> uniqueTitle.add(item.getTitle().toLowerCase()))
+                        .toList()
+        );
+    }
 
     @Override
     public String toString() {
