@@ -54,16 +54,6 @@ public class Teacher extends User {
     }
 
     @Override
-    public Set<Item> searchItemRecursive(String keyword) {
-        return new HashSet<>();
-    }
-
-    @Override
-    public List<Item> searchItemStream(String keyword) {
-        return List.of();
-    }
-
-    @Override
     public String toString() {
         return "Teacher{" +
                 super.toString() +
