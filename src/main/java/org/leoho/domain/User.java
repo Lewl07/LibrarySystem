@@ -47,6 +47,13 @@ public abstract class User {
         return helperSearchItemRecursive(keyword.toLowerCase(), 0, new LinkedHashSet<>());
     }
 
+    /**
+     * The helper method for searchItemRecursive
+     * @param keyword the keyword
+     * @param idx the index
+     * @param results the results
+     * @return the method itself
+     */
     private Set<Item> helperSearchItemRecursive(String keyword, int idx, Set<Item> results) {
         if (idx >= library.getItems().size()) {
             return results;
