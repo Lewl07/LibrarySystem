@@ -22,6 +22,18 @@ public abstract class Item {
         this.status = status;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Item item = (Item) o;
+        return Objects.equals(title, item.title);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(title);
+    }
+
     /**
      * Items are compared by title names, if same letter, sort by id.
      */
@@ -36,17 +48,5 @@ public abstract class Item {
                     ? titleComparison
                     : b1.getId().compareTo(b2.getId());
         }
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (o == null || getClass() != o.getClass()) return false;
-        Item item = (Item) o;
-        return Objects.equals(title, item.title);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(title);
     }
 }
