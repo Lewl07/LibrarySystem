@@ -41,7 +41,7 @@ public class Teacher extends User {
     @Override
     public boolean returnItem(Item item) {
         if (!borrowedItems.contains(item)) {
-            throw new IllegalArgumentException("You do not have this book in possession.");
+            throw new IllegalArgumentException("You do not have this item in possession.");
         }
 
         item.setStatus(Status.IN_STORE);
