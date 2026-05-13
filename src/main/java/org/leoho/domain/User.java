@@ -2,6 +2,7 @@ package org.leoho.domain;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.Setter;
 
 import java.util.*;
 
@@ -19,6 +20,12 @@ public abstract class User {
         this.name = name;
         this.borrowedItems = new ArrayList<>();
         this.library = library;
+    }
+
+    public User(String id, String name) {
+        this.id = id;
+        this.name = name;
+        this.borrowedItems = new ArrayList<>();
     }
 
     /**

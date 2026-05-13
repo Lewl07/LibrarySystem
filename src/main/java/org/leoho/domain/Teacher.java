@@ -12,6 +12,10 @@ public class Teacher extends User {
         super(name, library);
     }
 
+    public Teacher(String id, String name) {
+        super(id, name);
+    }
+
     /**
      * A user can borrow items, with a borrowing limit of 5 books (BOOKS ONLY) for students, and
      * a limit of 10 items for teachers.
