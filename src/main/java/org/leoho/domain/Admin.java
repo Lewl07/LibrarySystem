@@ -4,6 +4,11 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
 import org.leoho.interfaces.Reportable;
+import org.leoho.util.Constants;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
 
 @EqualsAndHashCode(callSuper = true)
 @Getter
@@ -43,5 +48,61 @@ public class Admin extends User implements Reportable {
         for (Item item : library.getItems()) {
             System.out.printf("ID: %s, Name: %s, Status: %s\n", item.getId(), item.getTitle(), item.getStatus());
         }
+    }
+
+    /**
+     * Load CSV fields to initialize students.
+     */
+    private void initStudents() {
+
+    }
+
+    /**
+     * Load CSV fields to initialize teachers.
+     */
+    private void initTeachers() {
+
+    }
+
+    /**
+     * Load CSV fields to initialize books.
+     */
+    private void initBooks() {
+
+    }
+
+    /**
+     * Load CSV fields to initialize DVDs.
+     */
+    private void initDVDs() {
+
+    }
+
+    /**
+     * Load CSV fields to initialize magazines.
+     */
+    private void initMagazines() {
+
+    }
+
+    /**
+     * Call initStudents() and initTeachers() to load users.
+     */
+    public void initUsers() {
+
+    }
+
+    /**
+     * Call initBooks(), initDVDs(), and initMagazines() to load items.
+     */
+    public void initItems() {
+
+    }
+
+    /**
+     * Backup the library data by writing current users and items into two CSV files
+     */
+    public void backupLibraryData() {
+
     }
 }
