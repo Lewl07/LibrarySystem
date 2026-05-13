@@ -16,7 +16,7 @@ public class StudentTest {
         Book book = new Book("Java", Status.IN_STORE, "1234567890123", "Leo", "Thriller");
 
         boolean expected = true;
-        boolean actual = student.getBorrowedItems().add(book);
+        boolean actual = student.borrowItem(book);
 
         Assertions.assertEquals(expected, actual);
     }
@@ -108,7 +108,7 @@ public class StudentTest {
         student.borrowItem(book1);
 
         boolean expected = true;
-        boolean actual = student.getBorrowedItems().add(book2);
+        boolean actual = student.borrowItem(book2);
 
         Assertions.assertEquals(expected, actual);
     }

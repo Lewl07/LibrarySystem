@@ -14,7 +14,7 @@ public class TeacherTest {
         Magazine magazine = new Magazine("Yoga", Status.IN_STORE, 1234, "Mike");
 
         boolean expected = true;
-        boolean actual = teacher.getBorrowedItems().add(magazine);
+        boolean actual = teacher.borrowItem((magazine));
 
         Assertions.assertEquals(expected, actual);
     }
