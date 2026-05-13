@@ -54,14 +54,42 @@ public class Admin extends User implements Reportable {
      * Load CSV fields to initialize students.
      */
     private void initStudents() {
+        File file = new File(Constants.STUDENTS_CSV_PATH);
 
+        try (Scanner scanner = new Scanner(file)) {
+            while (scanner.hasNext()) {
+                String row = scanner.nextLine();
+                String[] elements = row.split(" ");
+
+                id = elements[0];
+                name = elements[1];
+
+                Student student = new Student(id, name);
+            }
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     /**
      * Load CSV fields to initialize teachers.
      */
     private void initTeachers() {
+        File file = new File(Constants.TEACHERS_CSV_PATH);
 
+        try (Scanner scanner = new Scanner(file)) {
+            while (scanner.hasNext()) {
+                String row = scanner.nextLine();
+                String[] elements = row.split(" ");
+
+                id = elements[0];
+                name = elements[1];
+
+                Teacher teacher = new Teacher(id, name);
+            }
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     /**
@@ -89,7 +117,8 @@ public class Admin extends User implements Reportable {
      * Call initStudents() and initTeachers() to load users.
      */
     public void initUsers() {
-
+        initStudents();
+        initTeachers();
     }
 
     /**
