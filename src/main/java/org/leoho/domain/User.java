@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 
 @EqualsAndHashCode
 public abstract class User {
-    private static int nextId = 1;
+    private static int nextId = 0;
 
     @Getter protected String id;
     @Getter protected String name;

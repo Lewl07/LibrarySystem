@@ -10,20 +10,20 @@ import java.util.Objects;
 @Getter
 @ToString
 public abstract class Item {
-    private static int nextId = 1;
+    private static int nextId = 0;
 
     protected String id;
     protected String title;
     @Setter protected Status status;
 
     public Item(String title, Status status) {
-        this.title = title;
         this.id = String.format("%04d", nextId++);
+        this.title = title;
         this.status = status;
     }
 
     public Item(String id, String title, Status status) {
-        this.id = id;
+        this.id = String.format("%04d", nextId++);
         this.title = title;
         this.status = status;
     }
