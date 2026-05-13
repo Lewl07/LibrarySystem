@@ -122,6 +122,7 @@ public abstract class User {
                                 && ((DVD) item).getDirector().toLowerCase().contains(lowerKeyword)))
 
                         .filter(item -> uniqueTitle.add(item.getTitle().toLowerCase()))
+                        .sorted(new Item.TitleComparator())
                         .toList()
         );
     }
@@ -133,7 +134,7 @@ public abstract class User {
     }
 
     /**
-     * Users are compared by names, if same letter, sort by id.
+     * Users are compared by their names alphabetically, if same letter, sort by id.
      */
     public static class NameComparator implements Comparator<User> {
 
