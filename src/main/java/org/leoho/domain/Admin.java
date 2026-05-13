@@ -65,6 +65,7 @@ public class Admin extends User implements Reportable {
                 String name = elements[1];
 
                 Student student = new Student(id, name);
+                library.getUsers().add(student);
             }
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
@@ -86,6 +87,7 @@ public class Admin extends User implements Reportable {
                 String name = elements[1];
 
                 Teacher teacher = new Teacher(id, name);
+                library.getUsers().add(teacher);
             }
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
@@ -111,6 +113,7 @@ public class Admin extends User implements Reportable {
                 String genre = elements[5];
 
                 Book book = new Book(id, title, status, isbn, author, genre);
+                library.getItems().add(book);
             }
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
@@ -135,6 +138,7 @@ public class Admin extends User implements Reportable {
                 int duration = Integer.parseInt(elements[4]);
 
                 DVD dvd  = new DVD(id, title, status, director, duration);
+                library.getItems().add(dvd);
             }
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
@@ -159,6 +163,7 @@ public class Admin extends User implements Reportable {
                 String publisher = elements[4];
 
                 Magazine magazine  = new Magazine(id, title, status, issueNumber, publisher);
+                library.getItems().add(magazine);
             }
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
