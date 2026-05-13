@@ -61,8 +61,8 @@ public class Admin extends User implements Reportable {
                 String row = scanner.nextLine();
                 String[] elements = row.split(" ");
 
-                id = elements[0];
-                name = elements[1];
+                String id = elements[0];
+                String name = elements[1];
 
                 Student student = new Student(id, name);
             }
@@ -82,8 +82,8 @@ public class Admin extends User implements Reportable {
                 String row = scanner.nextLine();
                 String[] elements = row.split(" ");
 
-                id = elements[0];
-                name = elements[1];
+                String id = elements[0];
+                String name = elements[1];
 
                 Teacher teacher = new Teacher(id, name);
             }
