@@ -5,10 +5,6 @@ import lombok.Getter;
 import lombok.ToString;
 import org.leoho.interfaces.Reportable;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-
 @EqualsAndHashCode(callSuper = true)
 @Getter
 @ToString(callSuper = true)
@@ -18,28 +14,34 @@ public class Admin extends User implements Reportable {
         super(name, library);
     }
 
+    /**
+     * Admins do not borrow
+     * @param item the item
+     * @return nothing (exception handling)
+     */
     @Override
     public boolean borrowItem(Item item) {
-        return false;
+        throw new IllegalArgumentException("Admins cannot borrow items.");
     }
 
+    /**
+     * Admins do not borrow
+     * @param item the item
+     * @return nothing (exception handling)
+     */
     @Override
     public boolean returnItem(Item item) {
-        return false;
+       throw new IllegalArgumentException("Admins cannot return items.");
     }
 
-    @Override
-    public Set<Item> searchItemRecursive(String keyword) {
-        return new HashSet<>();
-    }
-
-    @Override
-    public List<Item> searchItemStream(String keyword) {
-        return List.of();
-    }
-
+    /**
+     * The admin generates a report of each item in the library
+     * giving the following information: ID, name, and status.
+     */
     @Override
     public void generateReport() {
-
+        for (Item item : library.getItems()) {
+            System.out.printf("ID: %s, Name: %s, Status: %s\n", item.getId(), item.getTitle(), item.getStatus());
+        }
     }
 }
