@@ -178,6 +178,8 @@ public class Admin extends User implements Reportable {
     public void initUsers() {
         initStudents();
         initTeachers();
+
+        library.getUsers().sort(new NameComparator());
     }
 
     /**
@@ -187,6 +189,8 @@ public class Admin extends User implements Reportable {
         initBooks();
         initDVDs();
         initMagazines();
+
+        library.getItems().sort(new Item.TitleComparator());
     }
 
     /**
