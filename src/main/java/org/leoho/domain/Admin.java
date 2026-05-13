@@ -8,6 +8,8 @@ import org.leoho.util.Constants;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Scanner;
 
 @EqualsAndHashCode(callSuper = true)
@@ -59,7 +61,7 @@ public class Admin extends User implements Reportable {
         try (Scanner scanner = new Scanner(file)) {
             while (scanner.hasNext()) {
                 String row = scanner.nextLine();
-                String[] elements = row.split(" ");
+                String[] elements = row.split(",");
 
                 String id = elements[0];
                 String name = elements[1];
@@ -81,7 +83,7 @@ public class Admin extends User implements Reportable {
         try (Scanner scanner = new Scanner(file)) {
             while (scanner.hasNext()) {
                 String row = scanner.nextLine();
-                String[] elements = row.split(" ");
+                String[] elements = row.split(",");
 
                 String id = elements[0];
                 String name = elements[1];
@@ -103,7 +105,7 @@ public class Admin extends User implements Reportable {
         try (Scanner scanner = new Scanner(file)) {
             while (scanner.hasNext()) {
                 String row = scanner.nextLine();
-                String[] elements = row.split(" ");
+                String[] elements = row.split(",");
 
                 String id = elements[0];
                 String title = elements[1];
@@ -129,7 +131,7 @@ public class Admin extends User implements Reportable {
         try (Scanner scanner = new Scanner(file)) {
             while (scanner.hasNext()) {
                 String row = scanner.nextLine();
-                String[] elements = row.split(" ");
+                String[] elements = row.split(",");
 
                 String id = elements[0];
                 String title = elements[1];
@@ -154,7 +156,7 @@ public class Admin extends User implements Reportable {
         try (Scanner scanner = new Scanner(file)) {
             while (scanner.hasNext()) {
                 String row = scanner.nextLine();
-                String[] elements = row.split(" ");
+                String[] elements = row.split(",");
 
                 String id = elements[0];
                 String title = elements[1];
