@@ -177,7 +177,7 @@ public class UserTest {
         library.getItems().add(book2);
         library.getItems().add(book3);
 
-        List<Item> actual = student.searchItemStream("\"\"");
+        List<Item> actual = student.searchItemStream("");
 
         Assertions.assertEquals(expected, actual);
     }
