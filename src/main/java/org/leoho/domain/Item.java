@@ -32,12 +32,12 @@ public abstract class Item {
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         Item item = (Item) o;
-        return Objects.equals(title, item.title);
+        return Objects.equals(id, item.id) && Objects.equals(title, item.title);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(title);
+        return Objects.hash(id, title);
     }
 
     /**
