@@ -96,21 +96,73 @@ public class Admin extends User implements Reportable {
      * Load CSV fields to initialize books.
      */
     private void initBooks() {
+        File file = new File(Constants.BOOKS_CSV_PATH);
 
+        try (Scanner scanner = new Scanner(file)) {
+            while (scanner.hasNext()) {
+                String row = scanner.nextLine();
+                String[] elements = row.split(" ");
+
+                String id = elements[0];
+                String title = elements[1];
+                Status status = Status.valueOf(elements[2]);
+                String isbn = elements[3];
+                String author = elements[4];
+                String genre = elements[5];
+
+                Book book = new Book(id, title, status, isbn, author, genre);
+            }
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     /**
      * Load CSV fields to initialize DVDs.
      */
     private void initDVDs() {
+        File file = new File(Constants.DVDS_CSV_PATH);
 
+        try (Scanner scanner = new Scanner(file)) {
+            while (scanner.hasNext()) {
+                String row = scanner.nextLine();
+                String[] elements = row.split(" ");
+
+                String id = elements[0];
+                String title = elements[1];
+                Status status = Status.valueOf(elements[2]);
+                String director = elements[3];
+                int duration = Integer.parseInt(elements[4]);
+
+                DVD dvd  = new DVD(id, title, status, director, duration);
+            }
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     /**
      * Load CSV fields to initialize magazines.
      */
     private void initMagazines() {
+        File file = new File(Constants.MAGAZINES_CSV_PATH);
 
+        try (Scanner scanner = new Scanner(file)) {
+            while (scanner.hasNext()) {
+                String row = scanner.nextLine();
+                String[] elements = row.split(" ");
+
+                String id = elements[0];
+                String title = elements[1];
+                Status status = Status.valueOf(elements[2]);
+                int issueNumber = Integer.parseInt(elements[3]);
+                String publisher = elements[4];
+
+                Magazine magazine  = new Magazine(id, title, status, issueNumber, publisher);
+            }
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     /**
@@ -125,7 +177,9 @@ public class Admin extends User implements Reportable {
      * Call initBooks(), initDVDs(), and initMagazines() to load items.
      */
     public void initItems() {
-
+        initBooks();
+        initDVDs();
+        initMagazines();
     }
 
     /**
