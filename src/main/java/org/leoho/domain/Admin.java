@@ -193,6 +193,56 @@ public class Admin extends User implements Reportable {
      * Backup the library data by writing current users and items into two CSV files
      */
     public void backupLibraryData() {
+        File usersFile = new File(Constants.USERS_CSV_PATH);
+        File itemsFile = new File(Constants.ITEMS_CSV_PATH);
 
+        try (FileWriter fileWriter = new FileWriter(usersFile)) {
+            for (User user : library.getUsers()) {
+                if (user instanceof Student student) {
+                    fileWriter.write(String.format("%s,%s\n", student.getId(), student.getName()));
+                } else if (user instanceof Teacher teacher) {
+                    fileWriter.write(String.format("%s,%s\n", teacher.getId(), teacher.getName()));
+                }
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        try (FileWriter fileWriter = new FileWriter(itemsFile)) {
+            for (Item item : library.getItems()) {
+                if (item instanceof Book book) {
+                    fileWriter.write(String.format("%s,%s,%s,%s,%s,%s\n",
+                            book.getId(),
+                            book.getTitle(),
+                            book.getStatus(),
+                            book.getIsbn(),
+                            book.getAuthor(),
+                            book.getGenre())
+                    );
+                }
+
+                if (item instanceof DVD dvd) {
+                    fileWriter.write(String.format("%s,%s,%s,%s,%s\n",
+                            dvd.getId(),
+                            dvd.getTitle(),
+                            dvd.getStatus(),
+                            dvd.getDirector(),
+                            dvd.getDuration())
+                    );
+                }
+
+                if (item instanceof Magazine magazine) {
+                    fileWriter.write(String.format("%s,%s,%s,%s,%s\n",
+                            magazine.getId(),
+                            magazine.getTitle(),
+                            magazine.getStatus(),
+                            magazine.getIssueNumber(),
+                            magazine.getPublisher())
+                    );
+                }
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
