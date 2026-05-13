@@ -22,6 +22,12 @@ public abstract class Item {
         this.status = status;
     }
 
+    public Item(String id, String title, Status status) {
+        this.id = id;
+        this.title = title;
+        this.status = status;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;

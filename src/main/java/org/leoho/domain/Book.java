@@ -24,4 +24,11 @@ public class Book extends Item {
         this.author = author;
         this.genre = genre;
     }
+
+    public Book(String id, String title, Status status, String isbn, String author, String genre) {
+        super(id, title, status);
+        this.isbn = isbn;
+        this.author = author;
+        this.genre = genre;
+    }
 }
