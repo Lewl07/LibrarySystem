@@ -22,10 +22,11 @@ public abstract class User {
         this.library = library;
     }
 
-    public User(String id, String name) {
+    public User(String id, String name, Library library) {
         this.id = id;
         this.name = name;
         this.borrowedItems = new ArrayList<>();
+        this.library = library;
     }
 
     /**

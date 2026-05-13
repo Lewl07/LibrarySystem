@@ -12,8 +12,8 @@ public class Teacher extends User {
         super(name, library);
     }
 
-    public Teacher(String id, String name) {
-        super(id, name);
+    public Teacher(String id, String name, Library library) {
+        super(id, name, library);
     }
 
     /**

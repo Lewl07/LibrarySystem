@@ -14,8 +14,8 @@ public class Student extends User {
         super(name, library);
     }
 
-    public Student(String id, String name) {
-        super(id, name);
+    public Student(String id, String name, Library library) {
+        super(id, name, library);
     }
 
     /**

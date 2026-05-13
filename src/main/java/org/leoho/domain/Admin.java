@@ -66,7 +66,7 @@ public class Admin extends User implements Reportable {
                 String id = elements[0];
                 String name = elements[1];
 
-                Student student = new Student(id, name);
+                Student student = new Student(id, name, library);
                 library.getUsers().add(student);
             }
         } catch (FileNotFoundException e) {
@@ -88,7 +88,7 @@ public class Admin extends User implements Reportable {
                 String id = elements[0];
                 String name = elements[1];
 
-                Teacher teacher = new Teacher(id, name);
+                Teacher teacher = new Teacher(id, name, library);
                 library.getUsers().add(teacher);
             }
         } catch (FileNotFoundException e) {
