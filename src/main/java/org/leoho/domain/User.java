@@ -2,9 +2,9 @@ package org.leoho.domain;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
-import lombok.Setter;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 @EqualsAndHashCode
 public abstract class User {
@@ -23,7 +23,7 @@ public abstract class User {
     }
 
     public User(String id, String name, Library library) {
-        this.id = id;
+        this.id = String.format("%04d", nextId++);
         this.name = name;
         this.borrowedItems = new ArrayList<>();
         this.library = library;
@@ -64,7 +64,9 @@ public abstract class User {
      */
     private Set<Item> helperSearchItemRecursive(String keyword, int idx, Set<Item> results) {
         if (idx >= library.getItems().size()) {
-            return results;
+            return results.stream()
+                    .sorted(new Item.TitleComparator())
+                    .collect(Collectors.toSet());
         }
 
         Item item = library.getItems().get(idx);
