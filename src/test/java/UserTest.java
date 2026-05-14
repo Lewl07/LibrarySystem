@@ -177,6 +177,10 @@ public class UserTest {
         library.getItems().add(book2);
         library.getItems().add(book3);
 
+        expected.add(book1);
+        expected.add(book3);
+        expected.add(book2);
+
         List<Item> actual = student.searchItemStream("");
 
         Assertions.assertEquals(expected, actual);
@@ -200,6 +204,7 @@ public class UserTest {
                 ("Java", Status.IN_STORE, "1234567890123", "Robert", "Coding");
 
         expected.add(book1);
+        expected.add(book3);
 
         library.getItems().add(book1);
         library.getItems().add(book2);
