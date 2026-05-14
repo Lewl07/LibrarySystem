@@ -21,6 +21,10 @@ public class Admin extends User implements Reportable {
         super(name, library);
     }
 
+    public Admin(String id, String name, Library library) {
+        super(id, name, library);
+    }
+
     /**
      * Admins do not borrow
      * @param item the item

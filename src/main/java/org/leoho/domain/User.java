@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 
 @EqualsAndHashCode
 public abstract class User {
-    private static int nextId = 0;
+    private static int nextId = 1;
 
     @Getter protected String id;
     @Getter protected String name;
@@ -23,10 +23,15 @@ public abstract class User {
     }
 
     public User(String id, String name, Library library) {
-        this.id = String.format("%04d", nextId++);
+        this.id = id;
         this.name = name;
         this.borrowedItems = new ArrayList<>();
         this.library = library;
+
+        int numericId = Integer.parseInt(id);
+        if (numericId >= nextId) {
+            nextId = numericId + 1;
+        }
     }
 
     /**

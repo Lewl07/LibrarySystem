@@ -10,7 +10,7 @@ import java.util.Objects;
 @Getter
 @ToString
 public abstract class Item {
-    private static int nextId = 0;
+    private static int nextId = 1;
 
     protected String id;
     protected String title;
@@ -23,9 +23,14 @@ public abstract class Item {
     }
 
     public Item(String id, String title, Status status) {
-        this.id = String.format("%04d", nextId++);
+        this.id = id;
         this.title = title;
         this.status = status;
+
+        int numericId = Integer.parseInt(id);
+        if (numericId >= nextId) {
+            nextId = numericId + 1;
+        }
     }
 
     @Override
