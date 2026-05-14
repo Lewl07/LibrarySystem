@@ -112,26 +112,40 @@ public abstract class User {
      * @return the list of items in accordance to the keyword
      */
     public List<Item> searchItemStream(String keyword) {
-        Set<String> uniqueTitle = new LinkedHashSet<>();
+        Set<String> uniqueItems = new LinkedHashSet<>();
         String lowerKeyword = keyword.toLowerCase();
 
-        return new ArrayList<>(
-                library.getItems().stream()
-                        .filter(item -> item.getTitle().toLowerCase().contains(lowerKeyword)
+        return library.getItems().stream()
+                .filter(item -> item.getTitle().toLowerCase().contains(lowerKeyword)
 
-                                || (item instanceof Book
-                                && ((Book) item).getAuthor().toLowerCase().contains(lowerKeyword))
+                        || (item instanceof Book book
+                        && book.getAuthor().toLowerCase().contains(lowerKeyword))
 
-                                || (item instanceof Magazine
-                                && ((Magazine) item).getPublisher().toLowerCase().contains(lowerKeyword))
+                        || (item instanceof Magazine magazine
+                        && magazine.getPublisher().toLowerCase().contains(lowerKeyword))
 
-                                || (item instanceof DVD
-                                && ((DVD) item).getDirector().toLowerCase().contains(lowerKeyword)))
+                        || (item instanceof DVD dvd
+                        && dvd.getDirector().toLowerCase().contains(lowerKeyword)))
 
-                        .filter(item -> uniqueTitle.add(item.getTitle().toLowerCase()))
-                        .sorted(new Item.TitleComparator())
-                        .toList()
-        );
+                .filter(item -> {
+                    String uniqueTitle = item.getTitle().toLowerCase();
+
+                    if (item instanceof Book book) {
+                        uniqueTitle += book.getAuthor().toLowerCase();
+                    }
+
+                    if (item instanceof Magazine magazine) {
+                        uniqueTitle += magazine.getPublisher().toLowerCase();
+                    }
+
+                    if (item instanceof DVD dvd) {
+                        uniqueTitle += dvd.getDirector().toLowerCase();
+                    }
+
+                    return uniqueItems.add(uniqueTitle);
+                })
+                .sorted(new Item.TitleComparator())
+                .toList();
     }
 
     @Override
