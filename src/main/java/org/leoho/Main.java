@@ -23,7 +23,7 @@ public class Main {
         library.getItems().add(book3);
         library.getUsers().add(bestTeacher);
 
-        List<Item> searchItem1 = bestTeacher.searchItemStream("Robert");
+        List<Item> searchItem1 = bestTeacher.searchItemStream("Michael");
         Set<Item> searchItem2 = bestTeacher.searchItemRecursive("Java 101");
 
         for (Item item : searchItem1) {
