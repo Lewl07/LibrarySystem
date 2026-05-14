@@ -50,9 +50,10 @@ public abstract class User {
     public abstract boolean returnItem(Item item);
 
     /**
-     * Search items in a library recursively, the user can either search by title or author of items.
-     * The search result is alphabetically yielded, if same letter, sort by ID.
-     * The sorting is ascending by default.
+     * Search items in a library by recursion, the user can either search by title or author of items.
+     * The search result is alphabetically yielded, if same letter, sort by ID (using TitleComparator).
+     * If multiple items share the same title, checks whether it is made by the same author/publisher/director.
+     * If so, they would be deemed as an extra copy and thus removed from the search result.
      * @param keyword the keyword
      * @return the Set of items in accordance to the keyword
      */
@@ -106,8 +107,9 @@ public abstract class User {
 
     /**
      * Search items in a library by stream, the user can either search by title or author of items.
-     * The search result is alphabetically yielded, if same letter, sort by ID.
-     * The sorting is ascending by default.
+     * The search result is alphabetically yielded, if same letter, sort by ID (using TitleComparator).
+     * If multiple items share the same title, checks whether it is made by the same author/publisher/director.
+     * If so, they would be deemed as an extra copy and thus removed from the search result.
      * @param keyword the keyword
      * @return the list of items in accordance to the keyword
      */
